@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday Brother 🌸</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Gaegu',cursive;
+background:#f8f1e7;
+overflow-x:hidden;
+overflow-y:auto;
+min-height:100vh;
+position:relative;
+color:#3b2c24;
+}
+
+/* FIREWORKS */
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+}
+
+/* NAVBAR */
+
+.navbar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:18px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(248,241,231,0.75);
+backdrop-filter:blur(10px);
+z-index:20;
+}
+
+.logo-dots{
+display:flex;
+gap:10px;
+}
+
+.dot{
+width:16px;
+height:16px;
+border-radius:50%;
+}
+
+.red{background:#ff8b8b;}
+.yellow{background:#ffd56b;}
+.green{background:#93e28f;}
+
+.nav-links{
+display:flex;
+gap:35px;
+}
+
+.nav-links a{
+text-decoration:none;
+color:#3b2c24;
+font-size:1.4rem;
+font-weight:bold;
+transition:.3s;
+}
+
+.nav-links a:hover{
+transform:translateY(-3px);
+color:#ff6b81;
+}
+
+/* MAIN */
+
+.main{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+padding-top:120px;
+padding-bottom:120px;
+position:relative;
+}
+
+/* FLOATING EMOJIS */
+
+.floating{
+position:absolute;
+font-size:2.5rem;
+animation:floaty 5s ease-in-out infinite;
+}
+
+@keyframes floaty{
+0%,100%{
+transform:translateY(0px);
+}
+50%{
+transform:translateY(-18px);
+}
+}
+
+.fl1{
+top:140px;
+left:120px;
+}
+
+.fl2{
+right:140px;
+top:140px;
+}
+
+.fl3{
+left:160px;
+bottom:180px;
+}
+
+.fl4{
+right:160px;
+bottom:180px;
+}
+
+/* CAT */
+
+.cat{
+font-size:5rem;
+animation:float 3s ease-in-out infinite;
+z-index:5;
+}
+
+@keyframes float{
+0%,100%{
+transform:translateY(0px);
+}
+50%{
+transform:translateY(-15px);
+}
+}
+
+/* TITLE */
+
+.title{
+font-size:5rem;
+line-height:1.1;
+text-align:center;
+font-weight:bold;
+z-index:5;
+}
+
+.subtitle{
+font-size:2rem;
+margin-top:18px;
+z-index:5;
+}
+
+/* BUTTONS */
+
+.buttons{
+display:flex;
+gap:30px;
+margin-top:30px;
+z-index:5;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.btn{
+padding:16px 42px;
+border-radius:50px;
+border:4px solid #9d0000;
+background:white;
+font-size:1.5rem;
+font-family:'Gaegu',cursive;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+box-shadow:0 8px 18px rgba(0,0,0,0.08);
+}
+
+.btn:hover{
+background:#ffd8e2;
+transform:scale(1.08);
+}
+
+/* FLOWERS */
+
+.side-img{
+position:absolute;
+width:170px;
+opacity:0.95;
+animation:float 5s ease-in-out infinite;
+}
+
+.left-flower{
+left:-20px;
+top:260px;
+}
+
+.right-flower{
+right:-20px;
+top:260px;
+}
+
+/* PHOTO CARD */
+
+.photo-card{
+position:relative;
+margin-top:50px;
+background:white;
+padding:12px;
+border-radius:14px;
+width:360px;
+box-shadow:0 10px 20px rgba(0,0,0,0.12);
+rotate:-2deg;
+z-index:5;
+transition:.4s;
+}
+
+.photo-card:hover{
+transform:scale(1.03);
+}
+
+.photo-card img{
+width:100%;
+border-radius:10px;
+display:block;
+}
+
+.caption{
+text-align:center;
+padding-top:10px;
+font-size:1.3rem;
+}
+
+/* NOTES */
+
+.note{
+position:absolute;
+background:#fff7fb;
+padding:18px;
+border-radius:12px;
+box-shadow:0 10px 20px rgba(0,0,0,0.08);
+line-height:1.7;
+z-index:10;
+}
+
+.memory-note{
+left:25px;
+bottom:120px;
+width:180px;
+rotate:-4deg;
+font-size:1rem;
+}
+
+.todo-note{
+right:25px;
+bottom:120px;
+width:190px;
+rotate:3deg;
+font-size:1rem;
+background:white;
+}
+
+/* JAPAN CARD */
+
+.japan-card{
+position:absolute;
+left:40px;
+top:320px;
+width:180px;
+background:white;
+padding:10px;
+border-radius:12px;
+rotate:4deg;
+box-shadow:0 10px 20px rgba(0,0,0,0.08);
+z-index:5;
+}
+
+.japan-card img{
+width:100%;
+border-radius:10px;
+}
+
+/* F1 CARD */
+
+.f1-card{
+position:absolute;
+right:40px;
+top:320px;
+width:180px;
+background:white;
+padding:10px;
+border-radius:12px;
+rotate:-5deg;
+box-shadow:0 10px 20px rgba(0,0,0,0.08);
+z-index:5;
+}
+
+.f1-card img{
+width:100%;
+border-radius:10px;
+}
+
+/* POPUP */
+
+.popup{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.6);
+display:flex;
+justify-content:center;
+align-items:center;
+opacity:0;
+pointer-events:none;
+transition:.4s;
+z-index:100;
+}
+
+.popup.active{
+opacity:1;
+pointer-events:all;
+}
+
+.popup-box{
+background:#fffaf3;
+padding:40px;
+border-radius:25px;
+width:90%;
+max-width:650px;
+text-align:center;
+position:relative;
+animation:pop .5s ease;
+}
+
+@keyframes pop{
+from{
+transform:scale(.6);
+opacity:0;
+}
+to{
+transform:scale(1);
+opacity:1;
+}
+}
+
+.popup-box h2{
+font-size:4rem;
+margin-bottom:15px;
+}
+
+.popup-box p{
+font-size:1.7rem;
+line-height:1.7;
+}
+
+.close{
+position:absolute;
+right:20px;
+top:10px;
+font-size:2.5rem;
+cursor:pointer;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.nav-links{
+display:none;
+}
+
+.title{
+font-size:3.4rem;
+}
+
+.subtitle{
+font-size:1.5rem;
+}
+
+.side-img{
+width:110px;
+}
+
+.japan-card,
+.f1-card,
+.note{
+display:none;
+}
+
+.photo-card{
+width:90%;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="fireworks"></canvas>
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+<div class="logo-dots">
+<div class="dot red"></div>
+<div class="dot yellow"></div>
+<div class="dot green"></div>
+</div>
+
+<div class="nav-links">
+<a href="#">greetings</a>
+<a href="#">gifts</a>
+<a href="#">pictures</a>
+<a href="#">flowers</a>
+<a href="#">song</a>
+<a href="#">letter</a>
+</div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+<!-- FLOATING -->
+
+<div class="floating fl1">🌸</div>
+<div class="floating fl2">✨</div>
+<div class="floating fl3">🏎️</div>
+<div class="floating fl4">🤖</div>
+
+<!-- FLOWERS -->
+
+<img class="side-img left-flower"
+src="https://pngimg.com/uploads/flowers/flowers_PNG102.png">
+
+<img class="side-img right-flower"
+src="https://pngimg.com/uploads/flowers/flowers_PNG102.png">
+
+<!-- JAPAN CARD -->
+
+<div class="japan-card">
+<img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?q=80&w=1200&auto=format&fit=crop">
+<div class="caption">japan dreams 🎌</div>
+</div>
+
+<!-- F1 CARD -->
+
+<div class="f1-card">
+<img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200&auto=format&fit=crop">
+<div class="caption">tiny f1 king 🏎️</div>
+</div>
+
+<!-- CAT -->
+
+<div class="cat">🐱</div>
+
+<!-- TITLE -->
+
+<div class="title">
+Happy Birthday<br>
+Brother 🌸
+</div>
+
+<div class="subtitle">
+do you want to see your gift?
+</div>
+
+<!-- BUTTONS -->
+
+<div class="buttons">
+<button class="btn" onclick="openGift()">YES PLEASE</button>
+<button class="btn" onclick="fireworks()">NO THANKS</button>
+</div>
+
+<!-- MEMORY NOTE -->
+
+<div class="note memory-note">
+
+💌 The day you were born:<br><br>
+
+♡ legend arrived<br>
+♡ life became funnier<br>
+♡ future engineer unlocked<br>
+♡ best brother ever
+
+</div>
+
+<!-- TODO NOTE -->
+
+<div class="note todo-note">
+
+📋 To-do list:<br><br>
+
+☑ be awesome<br>
+☑ build robots<br>
+☑ drive dream car<br>
+☑ visit japan<br>
+☑ keep coding<br>
+☑ make sister proud 🌸
+
+</div>
+
+<!-- PHOTO CARD -->
+
+<div class="photo-card">
+
+<!-- PUT YOUR PHOTO NAME HERE -->
+
+<img src="image.png">
+
+<div class="caption">
+main character squad 🌸✨
+</div>
+
+</div>
+
+</div>
+
+<!-- POPUP -->
+
+<div class="popup" id="popup">
+
+<div class="popup-box">
+
+<div class="close" onclick="closeGift()">×</div>
+
+<h2>🎉 SURPRISE 🎉</h2>
+
+<p>
+
+I hope your life becomes everything you dream about 💗
+<br><br>
+
+May you build cool robots,
+write insane code,
+drive your dream cars,
+and one day walk through Japan
+like the main character of a Ghibli movie 🌸🏎️✨
+
+</p>
+
+</div>
+
+</div>
+
+<!-- FIREWORKS JS -->
+
+<script>
+
+const canvas = document.getElementById("fireworks");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+function createFirework(x,y){
+
+for(let i=0;i<80;i++){
+
+particles.push({
+
+x,
+y,
+radius:Math.random()*3+1,
+color:`hsl(${Math.random()*360},100%,70%)`,
+speedX:(Math.random()-0.5)*8,
+speedY:(Math.random()-0.5)*8,
+life:100
+
+});
+
+}
+
+}
+
+function fireworks(){
+
+createFirework(
+Math.random()*canvas.width,
+Math.random()*canvas.height/2
+);
+
+}
+
+window.addEventListener("click",(e)=>{
+
+createFirework(e.clientX,e.clientY);
+
+});
+
+function animate(){
+
+ctx.fillStyle="rgba(248,241,231,0.12)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+particles.forEach((p,index)=>{
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.radius,0,Math.PI*2);
+ctx.fillStyle=p.color;
+ctx.fill();
+
+p.x += p.speedX;
+p.y += p.speedY;
+
+p.life--;
+
+if(p.life<=0){
+
+particles.splice(index,1);
+
+}
+
+});
+
+requestAnimationFrame(animate);
+
+}
+
+animate();
+
+setInterval(fireworks,1200);
+
+function openGift(){
+
+document
+.getElementById("popup")
+.classList.add("active");
+
+fireworks();
+
+}
+
+function closeGift(){
+
+document
+.getElementById("popup")
+.classList.remove("active");
+
+}
+
+window.addEventListener("resize",()=>{
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+});
+
+</script>
+
+</body>
+</html>
